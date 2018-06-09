@@ -14,6 +14,6 @@
         }
 
         public function execute() {
-            return $this->product->getProduct($_GET['id']);
+            return $this->product->getProduct($_GET['productId']);
         }
     }

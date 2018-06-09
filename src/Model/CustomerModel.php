@@ -14,8 +14,9 @@
 
         public function save($customer) {
             //do validation and stuffs before saving
-            $sql = "insert into customer set name = ".$customer['name'];
-            return $this->db->query($sql);
+            //$sql = "insert into customer set name = ".$customer;
+            //return $this->db->query($sql);
+            return true;
         }
 
     }
