@@ -2,4 +2,8 @@
 
     require "vendor/autoload.php";
 
-    $api = new \app\Controller\ApiController();
+    use app\Controller\ApiController;
+
+    $api = new ApiController();
+    $command = new $api->action();
+    $command->execute();

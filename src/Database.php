@@ -3,6 +3,9 @@
     //this could be moved to a better place
     namespace app;
 
+    use \PDO;
+    use \Exception;
+
     class Database {
 
         private $config, $connection;
@@ -17,12 +20,12 @@
             ];
 
             try {
-                $this->connection = new \PDO (
+                $this->connection = new PDO (
                     'mysql:host=' . $this->config['host'] . ';dbname=' . $this->config['db'] . ';charset=utf8',
                     $this->config['username'],
                     $this->config['password']
                 );
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 //log exception
             }
         }

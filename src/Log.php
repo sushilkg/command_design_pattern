@@ -8,7 +8,8 @@
         public function __construct() {
         }
 
-        public function log() {
-
+        public function log($message) {
+            //write it somewhere
+            print "\n<pre>".$message."</pre>";
         }
     }
