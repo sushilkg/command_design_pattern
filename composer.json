@@ -1,0 +1,15 @@
+{
+    "name": "sushilgupta/zenrooms",
+    "description": "Refactoring to sample code provided.",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "authors": [
+        {
+            "name": "Sushil Gupta",
+            "email": "desushil@gmail.com"
+        }
+    ],
+    "require": {}
+}
