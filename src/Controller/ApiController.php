@@ -8,7 +8,7 @@
     class ApiController {
 
         private $log;
-        public $action;
+        private $action;
 
         public function __construct() {
             $this->log = new Log();
@@ -19,20 +19,29 @@
             try {
                 switch ($_GET['case']) {
                     case "product":
-                        $action = "GetProductCommand";
+                        $action = [
+                            "command" => "app\Commands\GetProductCommand",
+                            "controller" => "app\Controller\ProductController"
+                        ];
                         break;
                     case "contact":
-                        $action = "ContactCommand";
+                        $action = [
+                            "command" => "app\Commands\ContactCommand",
+                            "controller" => "app\Controller\ContactController"
+                        ];
                         break;
                     case "customer":
-                        $action = "SaveCustomerCommand";
+                        $action = [
+                            "command" => "app\Commands\SaveCustomerCommand",
+                            "controller" => "app\Controller\CustomerController"
+                        ];
                         break;
                     default:
-                        $action = null;
                         throw new Exception('Invalid case');
                 }
             } catch (Exception $exception) {
                 $this->log->log($exception);
+                exit;
             }
 
             return $action;

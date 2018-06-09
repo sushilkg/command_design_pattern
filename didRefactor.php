@@ -2,8 +2,9 @@
 
     require "vendor/autoload.php";
 
-    use app\Controller\ApiController;
+    $api = new app\Controller\ApiController();
+    $action = $api->getAction();
+    $command = new $action['command'] (new $action['controller']);
+    $result = $command->execute();
 
-    $api = new ApiController();
-    $command = new $api->action();
-    $command->execute();
+    echo json_encode($result);

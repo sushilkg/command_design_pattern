@@ -19,7 +19,7 @@
         ];
 
         public function get($id) {
-            return $product = array_reduce($this->products, function ($product) use ($id) {
+            return $product = array_filter($this->products, function ($product) use ($id) {
                 return $product['id'] === $id;
             });
         }

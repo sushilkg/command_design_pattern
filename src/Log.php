@@ -5,11 +5,10 @@
 
     class Log {
 
-        public function __construct() {
-        }
-
         public function log($message) {
             //write it somewhere
-            print "\n<pre>".$message."</pre>";
+            print "<pre>";
+            print "$message";
+            print "</pre>";
         }
     }

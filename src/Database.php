@@ -3,15 +3,11 @@
     //this could be moved to a better place
     namespace app;
 
-    use \PDO;
-    use \Exception;
-
     class Database {
 
-        private $config, $connection;
-        private static $instance;
+        private $config;
 
-        private function __construct() {
+        public function __construct() {
             $this->config = [
                 'host' => 'localhost',
                 'username' => 'test',
@@ -19,28 +15,12 @@
                 'db' => 'db'
             ];
 
-            try {
-                $this->connection = new PDO (
-                    'mysql:host=' . $this->config['host'] . ';dbname=' . $this->config['db'] . ';charset=utf8',
-                    $this->config['username'],
-                    $this->config['password']
-                );
-            } catch (Exception $e) {
-                //log exception
-            }
+            //instantiate db connections here
         }
 
-        public static function getInstance() {
-            if (!isset(self::$instance)) {
-                self::$instance = new Database();
-            }
-            return self::$instance;
-        }
-
-        public function insert($table, $query) {
+        public function query($query) {
             //do query stuffs
-            //watch that sql injections and sensitization, use prepared statements etc etc
-            //should prolly be using something robust instead anyway
+            //$this->pdo->prepare($query)->execute();
             return true;
         }
 
