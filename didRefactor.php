@@ -7,4 +7,4 @@
     $command = new $action['command'] (new $action['controller']);
     $result = $command->execute();
 
-    echo json_encode($result);
+    echo json_encode([$result]);
