@@ -14,7 +14,7 @@
         }
 
         public function execute() {
-            $product_id = isset($_GET['productId']) ? $_GET['productId'] : "";
+            $product_id = (int) isset($_GET['productId']) ? $_GET['productId'] : "";
             return $this->product->getProduct($product_id);
         }
     }

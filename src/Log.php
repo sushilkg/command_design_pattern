@@ -5,8 +5,10 @@
 
     class Log {
 
-        public function log($message) : void {
+        public function log($message, $display = false) : void {
             //write it somewhere
-            echo ("Log: $message".PHP_EOL);
+            if ($display) {
+                echo("Log: $message" . PHP_EOL);
+            }
         }
     }

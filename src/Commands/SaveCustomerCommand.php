@@ -14,7 +14,8 @@
         }
 
         public function execute() {
-            //empty $_POST['customer'] will throw warning here, so suppressing it here and instead handling it down in Customer controller with validations
-            return $this->customer->save(@$_POST['customer']);
+            $customer = isset($_POST['customer']) ? $_POST['customer'] : "";
+
+            return $this->customer->save($customer);
         }
     }

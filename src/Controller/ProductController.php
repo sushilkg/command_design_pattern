@@ -13,18 +13,18 @@
             $this->log = new Log;
         }
 
-        public function getProduct(string $id) : array {
+        public function getProduct(int $id) : array {
             $product = new Product();
 
             try {
-                if (!$found_product = $product->get($id)) {
+                if (!$found = $product->findProductById($id)) {
                     throw new \Exception("Product not found");
                 }
             } catch (\Exception $exception) {
+                $found = ["message" => $exception->getMessage()];
                 $this->log->log($exception->getMessage());
-                exit;
             }
 
-            return $found_product;
+            return $found;
         }
     }
