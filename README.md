@@ -6,12 +6,12 @@ This repo contains an implementation of Command Design Pattern for the provided 
 The entry point for the refactored implementation is in `didRefactor.php`.
 
 ###### Setup
-This project uses composer to autoload files, so make sure to run `composer install`.  I've also started 
-a couple of basic tests that passes but certainly that can be improved in the `tests` directory.
+This project uses composer to autoload files, so make sure to run `composer install`.  I've also written
+ couple of basic tests that passes but certainly that can be improved.
 
 
 ###### What's wrong with the original code?
-Instead of being closed for modification and open for extension, it only encouraged it making it harder and troublesome for even any trivial changes.
+Instead of being closed for modification and open for extension, it only encouraged that. That not only made it harder and troublesome for even any trivial changes, but also error prone and harder to add anything additional.
 And it seems that this controller alone is trying to do all things at once. And not in a best way.
 The separate components (Items) like Product, Customer, Contact each should have their own responsible controllers that can take care of them.
 That way if we need to modify anything regarding that component only, we can do in the relevant part without touching it - but that's not the case here.
