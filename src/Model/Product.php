@@ -2,6 +2,8 @@
 
     namespace app\Model;
 
+    use \Exception;
+
     class Product {
 
         private $products = [
@@ -19,9 +21,21 @@
         ];
 
         public function get($id) {
-            //based on the code provided originally, should actually be returning first value in the products when productId = 1, instead with the actual match with id
-            return $product = array_filter($this->products, function ($product) use ($id) {
-                return $product['id'] === $id;
-            })[0];
+            try {
+                //based on the code provided originally, should actually be returning first value in the products when productId = 1
+                //instead we're actually matching up with the product id here
+                //just make it []
+                $product = array_filter($this->products, function ($product) use ($id) {
+                    return $product['id'] === $id;
+                });
+
+                if (empty($product))
+                    throw new Exception("Product not found");
+
+                return reset($product);
+            } catch (Exception $exception) {
+                return $exception->getMessage();
+            }
+
         }
     }
