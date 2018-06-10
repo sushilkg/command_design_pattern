@@ -8,15 +8,14 @@
 
         private $db;
 
-        public function __construct(Database $db) {
-            $this->db = $db;
+        public function __construct() {
+            $this->db = new Database();
         }
 
         public function save($customer) {
             //do validation and stuffs before saving
-            //$sql = "insert into customer set name = ".$customer;
-            //return $this->db->query($sql);
-            return true;
+            $sql = "insert into customer set name = ".$customer;
+            return $this->db->query($sql);
         }
 
     }

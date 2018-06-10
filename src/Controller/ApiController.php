@@ -16,8 +16,10 @@
         }
 
         public function getAction() {
+            $case = isset($_GET['case']) ? $_GET['case'] : "";
+
             try {
-                switch ($_GET['case']) {
+                switch ($case) {
                     case "product":
                         $action = [
                             "command" => "app\Commands\GetProductCommand",
@@ -40,7 +42,7 @@
                         throw new Exception('Invalid case');
                 }
             } catch (Exception $exception) {
-                $this->log->log($exception);
+                $this->log->log($exception->getMessage());
                 exit;
             }
 
