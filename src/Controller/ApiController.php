@@ -4,15 +4,30 @@
 
     use app\Log;
     use \Exception;
+    use Symfony\Component\HttpFoundation\JsonResponse;
 
     class ApiController {
 
         private $log;
         private $action;
+        public $response;
 
         public function __construct() {
             $this->log = new Log();
             $this->action = $this->getAction();
+        }
+
+        public function startup() {
+            if (!empty($this->action)) {
+                $command = new $this->action['command'] (new $this->action['controller']);
+                $this->response = $command->execute();
+            }
+        }
+
+        public function output() {
+            $response = new JsonResponse([$this->response]);
+            $response->send();
+            exit;
         }
 
         public function getAction() : array {
@@ -42,7 +57,7 @@
                         throw new Exception('Invalid case');
                 }
             } catch (Exception $exception) {
-                $this->log->log($exception->getMessage());
+                $this->log->log($exception->getMessage(), true);
                 exit;
             }
 
