@@ -6,9 +6,9 @@
 
     class CustomerController {
 
-        public function save($new_customer) {
+        public function save(string $new_customer) : string {
             //do validation and stuffs
-            $customer = new Customer();
+            $customer = new Customer;
             if ($customer->save($new_customer))
                 return "OK";
 

@@ -15,7 +15,7 @@
             $this->action = $this->getAction();
         }
 
-        public function getAction() {
+        public function getAction() : array {
             $case = isset($_GET['case']) ? $_GET['case'] : "";
 
             try {

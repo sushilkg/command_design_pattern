@@ -4,7 +4,7 @@
 
     class ContactController {
 
-        public function contact() {
+        public function contact() : string {
             return "contact@zemrooms.com";
         }
     }

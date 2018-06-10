@@ -3,9 +3,11 @@
     namespace app\Model;
 
     use \Exception;
+    use app\Log;
 
     class Product {
 
+        private $log;
         private $products = [
             [
                 'id' => '666',
@@ -20,22 +22,18 @@
             ]
         ];
 
-        public function get($id) {
-            try {
-                //based on the code provided originally, should actually be returning first value in the products when productId = 1
-                //instead we're actually matching up with the product id here
-                //just make it []
-                $product = array_filter($this->products, function ($product) use ($id) {
-                    return $product['id'] === $id;
-                });
+        public function __construct() {
+            $this->log = new Log;
+        }
 
-                if (empty($product))
-                    throw new Exception("Product not found");
+        public function get(string $id) : ?array {
+            //based on the code provided originally, should actually be returning first value in the products when productId = 1
+            //instead we're actually matching up with the product id here
+            //just access it with index key []
+            $product = array_filter($this->products, function ($product) use ($id) {
+                return $product['id'] === $id;
+            });
 
-                return reset($product);
-            } catch (Exception $exception) {
-                return $exception->getMessage();
-            }
-
+            return reset($product);
         }
     }

@@ -18,7 +18,7 @@
             //instantiate db connections here
         }
 
-        public function query($query) {
+        public function query($query) : bool {
             //do query stuffs
             //$this->pdo->prepare($query)->execute();
             return true;

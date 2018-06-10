@@ -14,7 +14,7 @@
         }
 
         public function execute() {
-            //empty $_POST['productId'] will throw warning here, so suppressing it here and instead handling it down in Product controller with validations
-            return $this->product->getProduct(@$_GET['productId']);
+            $product_id = isset($_GET['productId']) ? $_GET['productId'] : "";
+            return $this->product->getProduct($product_id);
         }
     }

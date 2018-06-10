@@ -5,10 +5,8 @@
 
     class Log {
 
-        public function log($message) {
+        public function log($message) : void {
             //write it somewhere
-            print "<pre>";
-            print "$message";
-            print "</pre>";
+            echo ("Log: $message".PHP_EOL);
         }
     }
