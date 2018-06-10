@@ -2,12 +2,31 @@
 
     namespace app\Model;
 
-    use \Exception;
-    use app\Log;
-
     class Product {
 
-        private $log;
+        private $price;
+
+        public function __construct() {
+            $this->price = new Price;
+        }
+
+        public function get(string $id) : ?array {
+            //based on the code provided originally, should actually be returning first value in the products when productId = 1
+            //instead we're actually matching up with the product id here
+            //just access it with index key []
+            $products = new ProductService();
+            $product = array_filter($products->all(), function ($product) use ($id) {
+                return $product['id'] === $id;
+            });
+
+            if(!empty($product))
+                return reset($product);
+
+            return [];
+        }
+    }
+
+    class ProductService {
         private $products = [
             [
                 'id' => '666',
@@ -22,18 +41,7 @@
             ]
         ];
 
-        public function __construct() {
-            $this->log = new Log;
-        }
-
-        public function get(string $id) : ?array {
-            //based on the code provided originally, should actually be returning first value in the products when productId = 1
-            //instead we're actually matching up with the product id here
-            //just access it with index key []
-            $product = array_filter($this->products, function ($product) use ($id) {
-                return $product['id'] === $id;
-            });
-
-            return reset($product);
+        public function all() {
+            return $this->products;
         }
     }
