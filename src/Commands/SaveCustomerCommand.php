@@ -14,7 +14,7 @@
         }
 
         public function execute() {
-            //empty $_POST['customer'] will throw warning here, so suppressing it here and instead handling it down in Customer model with validations
+            //empty $_POST['customer'] will throw warning here, so suppressing it here and instead handling it down in Customer controller with validations
             return $this->customer->save(@$_POST['customer']);
         }
     }

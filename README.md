@@ -1,2 +1,2 @@
 # zenrooms
-Refactoring the test code.
+Refactoring the sample code provided.

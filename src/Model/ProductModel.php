@@ -19,6 +19,7 @@
         ];
 
         public function get($id) {
+            //based on the code provided originally, return first value in the products when productId = 1, instead with the actual match with id
             return $product = array_filter($this->products, function ($product) use ($id) {
                 return $product['id'] === $id;
             });
