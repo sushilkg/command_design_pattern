@@ -16,5 +16,7 @@
       "app\\": "src"
     }
   },
-  "require": {}
+  "require": {
+    "symfony/http-foundation": "^4.1"
+  }
 }
