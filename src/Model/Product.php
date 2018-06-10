@@ -10,16 +10,13 @@
             $this->price = new Price;
         }
 
-        public function get(string $id) : ?array {
-            //based on the code provided originally, should actually be returning first value in the products when productId = 1
-            //instead we're actually matching up with the product id here
-            //just access it with index key []
+        public function findProductById(int $id) : array {
             $products = new ProductService();
-            $product = array_filter($products->all(), function ($product) use ($id) {
-                return $product['id'] === $id;
-            });
+            $product = array_filter($products->all(), function ($key) use ($id) {
+                return $id === $key;
+            }, ARRAY_FILTER_USE_KEY);
 
-            if(!empty($product))
+            if (!empty($product))
                 return reset($product);
 
             return [];
@@ -27,13 +24,18 @@
     }
 
     class ProductService {
+
+        //prolly should get rid of the index keys here since we already do have productId with each product
+        //but keeping them in order to let it resemble the original code
         private $products = [
-            [
-                'id' => '666',
-                'name' => 'Fluffy unicorn',
-                'description' => 'It\'s so fluffy you\'ll melt and bring it to the park and eat ice cream. https://timedotcom.files.wordpress.com/2015/03/deadpool.jpg',
-                'price' => ['amount' => 10000, 'currency' => 'USD']
-            ], [
+            1 =>
+                [
+                    'id' => '666',
+                    'name' => 'Fluffy unicorn',
+                    'description' => 'It\'s so fluffy you\'ll melt and bring it to the park and eat ice cream. https://timedotcom.files.wordpress.com/2015/03/deadpool.jpg',
+                    'price' => ['amount' => 10000, 'currency' => 'USD']
+                ],
+            2 => [
                 'id' => '667',
                 'name' => 'Fluffy tech lead',
                 'description' => '”I don’t care if it works on your machine! We are not shipping your machine!” – Vidiu Platon',
