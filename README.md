@@ -1,5 +1,5 @@
-# zenrooms
-Refactoring the sample code provided.
+# Refactoring excercise
+Refactoring of the sample code provided - implementing command design pattern.
 
 ###### What's this?
 This repo contains an implementation of Command Design Pattern for the provided code that lies in `doRefactor.php`.
